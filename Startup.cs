@@ -67,9 +67,9 @@ namespace TestSoln.App
             .AddMicrosoftIdentityWebApi(Configuration, "AzureAd");
             services.AddAuthorization(options =>
             {
-                options.AddPolicy(Wavespace.Constant.Constants.AdminstratorPolicy, policy =>
+                options.AddPolicy("AdministratorPolicy", policy =>
                 {
-                    policy.Requirements.Add(new UserRoleRequirement(Wavespace.Constant.Constants.AdminRole));
+                    policy.Requirements.Add(new UserRoleRequirement("Admin"));
                 });
             });
             KeyVault.InitializeApplicationSetting(this.Configuration);
@@ -98,7 +98,7 @@ namespace TestSoln.App
             services.AddControllers(config => { 
                 var policy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
-                    .AddRequirements(new UserRoleRequirement(Wavespace.Constant.Constants.AdminRole))
+                    .AddRequirements(new UserRoleRequirement("Admin"))
                     .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             }).AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
