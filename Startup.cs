@@ -1,11 +1,11 @@
-using EY.Infra.IoC;
-using EY.wavespace.App.Configurations;
-using EY.wavespace.App.Middlewares;
-using EY.wavespace.Application.ViewModel;
-using EY.wavespace.Data.Context;
-using EY.wavespace.Services.Services;
-using EY.Wavespace.Common;
-using EY.Wavespace.Common.Logging;
+using TestSoln.Infra.IoC;
+using TestSoln.App.Configurations;
+using TestSoln.App.Middlewares;
+using TestSoln.Application.ViewModel;
+using TestSoln.Data.Context;
+using TestSoln.Services.Services;
+using TestSoln.Common;
+using TestSoln.Common.Logging;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.ApplicationInsights.DependencyCollector;
@@ -25,7 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace EY.wavespace.App
+namespace TestSoln.App
 {
     public class Startup
     {
@@ -175,7 +175,7 @@ namespace EY.wavespace.App
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "wavespace API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestSoln API", Version = "v1" });
                 c.CustomSchemaIds((type) => type.FullName);
                 c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
